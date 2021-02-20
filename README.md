@@ -1,4 +1,4 @@
-# 基于 koa2+typescript+sequelize+nunjucks+log4js+seagger的web端框架
+# 基于 koa2+typescript+sequelize+nuxt+log4js+seagger的web端框架
 
 附加说明
 ```bash
@@ -62,7 +62,8 @@ npm run docker  -----  在docker下运行
 │   ├── log4js 程序日志
 │   └── pm2 系统日志
 ├── dist  生产代码文件夹
-├── src
+├── client nuxt文件夹
+├── server koa 文件夹
 │   ├── bin 启动文件
 │   ├── cache 缓存的文件夹
 │   │   ├── redis     redis缓存的文件夹
