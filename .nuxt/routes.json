@@ -1,0 +1,16 @@
+[
+  {
+    "name": "hello",
+    "path": "/hello",
+    "component": "E:\\\\work\\\\gitlab\\\\前端群组\\\\cli\\\\cli_koa_nuxt\\\\client\\\\views\\\\hello.vue",
+    "chunkName": "views/hello",
+    "_name": "_46b84852"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "E:\\\\work\\\\gitlab\\\\前端群组\\\\cli\\\\cli_koa_nuxt\\\\client\\\\views\\\\index.vue",
+    "chunkName": "views/index",
+    "_name": "_617b4f5c"
+  }
+]
