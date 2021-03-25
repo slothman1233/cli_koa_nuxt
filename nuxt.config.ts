@@ -49,7 +49,7 @@ const config = {
     },
 
     build: {
-        cache: process.env.NODE_ENV === 'ga',
+        cache: false,
         vendor: ['element-ui'],
         extractCSS: { allChunks: true },
         optimization: {
