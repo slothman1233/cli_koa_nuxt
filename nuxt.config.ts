@@ -41,8 +41,7 @@ const config = {
         ]
     },
     loading: { color: '#3B8070' },
-
-    css: ['element-ui/lib/theme-chalk/index.css', '~/static/style/main.css'],
+    css: ['~/static/style/main.css', "element-ui/lib/theme-chalk/index.css"],
 
     render: {
         compressor: false, // 不使用压缩
@@ -50,7 +49,8 @@ const config = {
     },
 
     build: {
-        cache: true,
+        cache: process.env.NODE_ENV === 'ga',
+        vendor: ['element-ui'],
         extractCSS: { allChunks: true },
         optimization: {
             splitChunks: {
@@ -97,6 +97,17 @@ const config = {
                 config.plugins[0].options.filename = 'style/[name].css?v=[contenthash:7]'
                 config.plugins[0].options.chunkFilename = 'style/[name].css?v=[contenthash:7]'
             }
+            if (isDev && isClient) {
+                config.module.rules.push({
+                    test: /\.ts$/,
+                    exclude: [/node_modules/, /vendor/, /\.nuxt/],
+                    loader: 'ts-loader',
+                    options: {
+                        appendTsSuffixTo: [/\.vue$/],
+                        transpileOnly: true
+                    }
+                })
+            }
 
             config.node = {
                 fs: 'empty'
@@ -115,7 +126,8 @@ const config = {
     //     '@nuxtjs/axios'
     // ],
     plugins: [
-        '~/plugins/truncate'
+        { src: '~/plugins/truncate', ssr: true },
+        { src: '~/plugins/elementui', ssr: true },
 
     ],
 
@@ -152,7 +164,7 @@ const config = {
     // ]
 }
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'ga') {
     (<any>config.build).filenames = {
         manifest: 'js/manifest.js?v=[hash:7]',
         vendor: 'js/vendor.js?v=[hash:7]',

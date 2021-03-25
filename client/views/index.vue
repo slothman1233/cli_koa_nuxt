@@ -29,7 +29,7 @@ export default class extends Vue {
   private people!: Person[]
 
   private async mounted(context: Context) {
-    console.log('mounted')
+    console.log('mou2323nted')
     console.log(this.people)
   }
 }
