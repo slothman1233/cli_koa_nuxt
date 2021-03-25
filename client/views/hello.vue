@@ -105,11 +105,10 @@ export default class Hello extends Vue {
     this.message = "sgg";
   }
 
-  private async mounted(context: Context) {
+  private async mounted() {
     console.log(66666666666666, this.$truncate("gg"));
     console.log(777777777777777, profiles.people);
     // console.log(this.userAgent);
-    // console.log("mounted" + typeof context);
     const people = await getrandom();
     const ramdomPerson: Person =
       people[Math.floor(Math.random() * people.length)];
