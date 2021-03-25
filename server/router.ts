@@ -7,7 +7,7 @@ const { ROUTER_META, CONTROLLER_PATH_METADATA, MIDDLEWARE } = ROUTER_MAP
 import Router from 'koa-router'
 import { Context, Next } from 'koa'
 import log from './middleware/log4js/log'
-
+import koaCompose from 'koa-compose'
 /**
  * 路由的初始化
  * @param {Router} router koa-router
@@ -40,7 +40,7 @@ const addRouter = (router: Router) => {
             const ctr = new m()
             const RoutePath = ControllerPath + sprit(ActionPath)
             let methods: Array<any> = middlewares[name] || []
-            router[method](RoutePath, middlewareFn(methods), ctr[name])
+            router[method](RoutePath, koaCompose(methods), ctr[name])
 
           
 

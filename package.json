@@ -48,7 +48,7 @@
         "cross-env": "^7.0.3",
         "crypto": "^1.0.1",
         "debug": "^4.1.1",
-        "element-ui": "^2.15.0",
+        "element-ui": "^2.15.1",
         "fast-json-stringify": "^2.3.1",
         "fs-extra": "^9.0.1",
         "html-minifier": "^4.0.0",

@@ -1,5 +1,6 @@
 {
     "compilerOptions": {
+        "skipLibCheck": true,  // 新增到这里
         "baseUrl": ".", // import的相对起始路径
         "outDir": "./dist", // 构建输出目录
         "module": "commonjs",
@@ -40,8 +41,7 @@
             "@types/node",
             "@nuxt/types",
             "@nuxtjs/axios"
-        ],
-        "skipLibCheck": true
+        ]
     },
     "presets": [
         [
