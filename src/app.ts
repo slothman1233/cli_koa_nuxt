@@ -202,10 +202,10 @@ async function start() {
     // console.log('isDev:' + nuxtconfig.dev)
     // Instantiate nuxt.js
     const nuxt = new Nuxt(nuxtconfig)
-    const {
-        host = process.env.HOST || nuxtconfig.server.host,
-        port = process.env.PORT || nuxtconfig.server.port
-    } = nuxt.options.server
+    // const {
+    //     host = process.env.HOST || nuxtconfig.server.host,
+    //     port = process.env.PORT || nuxtconfig.server.port
+    // } = nuxt.options.server
 
 
     await nuxt.ready()

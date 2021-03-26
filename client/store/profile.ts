@@ -2,7 +2,7 @@
 import { Module, VuexModule, Mutation, Action, MutationAction } from 'vuex-module-decorators'
 import Vuex from 'vuex'
 import { RootState, Person } from '~/models'
-import localRandomData from '~/static/json/random-data.json'
+import localRandomData from '~/static/assets/json/random-data.json'
 
 @Module({ namespaced: true, stateFactory: true, name: 'profile' })
 export default class Profile extends VuexModule {

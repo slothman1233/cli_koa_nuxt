@@ -9,7 +9,7 @@ import service from '../https'
 //     })
 
 export const getrandom = () =>
-    service.get<any>('/json/random-data.json').then((response) => {
+    service.get<any>('/assets/json/random-data.json').then((response) => {
         return response?.bodyMessage
     }).catch((e: any) => {
         console.log(e)

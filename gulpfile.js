@@ -5,8 +5,8 @@ const ts = require('gulp-typescript')
 const nodemon = require('gulp-nodemon')
 const replace = require('gulp-replace')
 const tsProject = ts.createProject('tsconfig.json')
-const ENV = process.env.NODE_ENV
-
+const ENV = process.env.NODE_ENV || 'ga'
+console.log(ENV)
 
 
 function clean(cb) {
@@ -15,28 +15,45 @@ function clean(cb) {
 
 // 输出 js 到 dist目录
 function toJs() {
-    return src(['server/**/*.ts', 'server/**/*.js', '!server/wwwroot/**/*','nuxt.config.ts'])
+    return src(['src/**/*.ts', 'src/**/*.js', '!src/wwwroot/**/*', 'nuxt.config.ts'])
         .pipe(tsProject())
-        .pipe(replace(`"../nuxt.config"`,`"./nuxt.config"`))
+        .pipe(replace(`"../nuxt.config"`, `"./nuxt.config"`))
+        .pipe(replace(`buildDir: 'dist/wwwroot',`, `buildDir: 'wwwroot/',`))
         .pipe(dest('dist'))
 }
 
+function topm2config() {
+    return src(['pm2.conf.json'])
+        .pipe(replace('src/bin/www.ts', `bin/www.js`))
+        .pipe(replace('"NODE_ENV": "ga"', `"NODE_ENV": "${ENV}"`))
+        .pipe(dest('dist'))
+}
+
+function towwwroot() {
+    return src(['client/static/assets/**/*'])
+        .pipe(dest('dist/wwwroot/assets'))
+}
+function towwwicon() {
+    return src(['client/static/favicon.ico'])
+        .pipe(dest('dist/wwwroot'))
+}
+
+//assets
 
 function tostaticfile() {
-
     return src(['package.json'])
         .pipe(replace('NODE_ENV=ga', `NODE_ENV=${ENV}`))
         .pipe(dest('dist'))
 }
 
 // function tostaticwwwroot(){
-//     return src(['server/wwwroot/**/*'])
+//     return src(['src/wwwroot/**/*'])
 //         .pipe(dest('dist/wwwroot'))
 // }
 
 
-function tostaticviews(){
-    return src(['server/views/**/*'])
+function tostaticviews() {
+    return src(['src/views/**/*'])
         .pipe(dest('dist/views'))
 }
 
@@ -45,7 +62,7 @@ function tostaticviews(){
 function runNodemon(done) {
     let stream = nodemon({
         inspect: true,
-        script: 'server/bin/www.ts',
+        script: 'src/bin/www.ts',
         watch: 'src',
         ext: 'ts',
         env: { NODE_ENV: ENV },
@@ -63,7 +80,9 @@ function runNodemon(done) {
 }
 
 const build = series(clean, toJs, tostaticfile, tostaticviews)
+const static = series(towwwroot, towwwicon, topm2config)
 task('build', build)
+task("static",static)
 task('default', runNodemon)
 exports.build = build
 exports.default = runNodemon

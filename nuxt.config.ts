@@ -8,6 +8,8 @@ const config = {
         pages: 'views' // Nuxt will look for the views/ instead of the pages/ folder
     },
 
+    buildDir: 'dist/wwwroot',
+    //dist/wwwroot
     pageTransition: 'page', //动画
 
     generate: {
@@ -20,13 +22,13 @@ const config = {
 
     telemetry: false,
 
-    server: {
-        port: 2000, // default: 2000
-        host: '0.0.0.0', // default: localhost,
-        timing: { // server.timing可以是提供选项的对象。目前，支持total(直接跟踪服务器端渲染所花费的全部时间)
-            total: true
-        }
-    },
+    // server: {
+    //     port: 2000, // default: 2000
+    //     host: '0.0.0.0', // default: localhost,
+    //     timing: { // server.timing可以是提供选项的对象。目前，支持total(直接跟踪服务器端渲染所花费的全部时间)
+    //         total: true
+    //     }
+    // },
 
     // globalName:"test",
     head: {

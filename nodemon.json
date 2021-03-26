@@ -11,7 +11,7 @@
   "events": {
   },
   "watch": [
-    "server/"
+    "src/"
   ],
  
   "ext": "js,ts",

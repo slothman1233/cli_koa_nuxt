@@ -1,8 +1,7 @@
 {
     "apps": {
-        "cwd": "./",
-        "name": "koa_ts",
-        "script": "server/bin/www.ts",
+        "name": "koa_nuxt",
+        "script": "src/bin/www.ts",
         "watch": true,
         "ignore_watch": [
             "node_modules",
@@ -11,9 +10,14 @@
             "dist",
             "coverage"
         ],
-        "instances": 1,
+        "env": {
+            "NODE_ENV": "ga"
+        },
+        "instances": "max",
+        "max_memory_restart": "200M",
         "error_file": "./logs/pm2/err.log",
         "out_file": "./logs/pm2/out.log",
+        "pid_file": "./logs/pm2/pid.log",
         "log_date_format": "YYYY-MM-DD HH:mm:ss",
         "merge_logs": true
     }
