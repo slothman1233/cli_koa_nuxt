@@ -5,7 +5,7 @@
 
 
 
-function makeInjectedResponse(koaCtx: any, /*markHandled,*/ whenEnded: any) {
+ function makeInjectedResponse(koaCtx: any, /*markHandled,*/ whenEnded: any) {
     let res = koaCtx.res
 
     res.on('close', whenEnded).on('finish', whenEnded)
@@ -56,7 +56,7 @@ function handler(ctx: any, connectMiddleware: any) {
                 })
         ]
         let assumeSync = true
-        // (req, res, next) or (err, req, res, next)
+        // (req, res, next) or (err, req, res, next) 
         if (connectMiddleware.length >= 3) {
             args.push((err: any) => {
                 if (err) { reject(err) }
