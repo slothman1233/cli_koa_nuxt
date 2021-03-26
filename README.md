@@ -63,7 +63,7 @@ npm run docker  -----  在docker下运行
 │   └── pm2 系统日志
 ├── dist  生产代码文件夹
 ├── client nuxt文件夹
-├── server koa 文件夹
+├── src koa 文件夹
 │   ├── bin 启动文件
 │   ├── cache 缓存的文件夹
 │   │   ├── redis     redis缓存的文件夹

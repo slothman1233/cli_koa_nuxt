@@ -38,7 +38,7 @@ const addRouter = (router: Router) => {
         RouteMap.map(item => {
             const { name, path: ActionPath, method } = item
             const ctr = new m()
-            const RoutePath = ControllerPath + sprit(ActionPath)
+            const RoutePath = "/api" + ControllerPath + sprit(ActionPath)
             let methods: Array<any> = middlewares[name] || []
             router[method](RoutePath, koaCompose(methods), ctr[name])
 

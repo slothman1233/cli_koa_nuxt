@@ -12,7 +12,7 @@
         <div class="grid-content bg-purple-dark"></div>
       </el-col>
     </el-row>
-
+  <img src="/assets/images/11.png" />
     <card v-if="person" :person="person" :title="title" />
   </div>
 </template>

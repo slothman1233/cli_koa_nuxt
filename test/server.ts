@@ -4,7 +4,7 @@
  */
 
 import request from 'supertest'
-import app from '../server/app'
+import app from '../src/app'
 const server = app.callback()
 // const req = request(server)
 
