@@ -44,8 +44,8 @@
     "dependencies": {
         "@nuxt/typescript-runtime": "^2.0.1",
         "@nuxtjs/axios": "^5.13.0",
-        "@stl/request": "^1.2.8",
-        "@stl/tool-ts": "^1.0.10",
+        "wl-request": "^1.2.8",
+        "wl-tool-ts": "^1.0.10",
         "cross-env": "^7.0.3",
         "crypto": "^1.0.1",
         "debug": "^4.1.1",
